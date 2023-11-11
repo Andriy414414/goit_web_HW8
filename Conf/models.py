@@ -8,3 +8,5 @@ class Author(Document):
     born_location = StringField(max_length=150)
     description = StringField()
     meta = {"collection": "author"}
+
+class Author
