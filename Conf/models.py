@@ -1,5 +1,4 @@
 from mongoengine import connect, Document, StringField, ReferenceField, ListField, CASCADE
-from db import connect
 
 
 class Author(Document):
