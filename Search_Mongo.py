@@ -18,6 +18,7 @@ def find_by_tag(tag: str) -> list[str | None]:
     result = [q.quote for q in qoutes]
     return result
 
+
 @cache
 def find_by_tags(tags: str) -> List[str | None]:
     tag_list = tags.split(',')
@@ -26,6 +27,7 @@ def find_by_tags(tags: str) -> List[str | None]:
     quotes = Quote.objects(tags__iregex=regex_pattern)
     result = [q.quote for q in quotes]
     return result
+
 
 @cache
 def find_by_author(author: str) -> dict[Any, list[Any]]:
@@ -36,6 +38,7 @@ def find_by_author(author: str) -> dict[Any, list[Any]]:
         qoutes = Quote.objects(author=a)
         result[a.fullname] = [q.quote for q in qoutes]
     return result
+
 
 if __name__ == "__main__":
     while True:
@@ -55,7 +58,3 @@ if __name__ == "__main__":
         else:
             print("Невідома команда. Спробуйте ще раз.")
             continue
-
-
-
-
