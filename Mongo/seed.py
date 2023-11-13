@@ -2,8 +2,9 @@ import json
 from models import Author, Quote
 from mongoengine.errors import NotUniqueError
 
-if __name__ == '__main__':
-    with open('authors.json', encoding='utf-8') as fd:
+
+def load_authors(filename):
+    with open(filename, encoding='utf-8') as fd:
         data = json.load(fd)
         for el in data:
             try:
@@ -13,9 +14,16 @@ if __name__ == '__main__':
             except NotUniqueError:
                 print(f"Author already exists")
 
-    with open("quotes.json", encoding='utf-8') as fd:
+
+def load_quotes(filename):
+    with open(filename, encoding='utf-8') as fd:
         data = json.load(fd)
         for el in data:
             author, *_ = Author.objects(fullname=el.get('author'))
             quote = Quote(quote=el.get('quote'), tags=el.get('tags'), author=author)
             quote.save()
+
+
+if __name__ == '__main__':
+    load_authors('authors.json')
+    load_quotes('quotes.json')

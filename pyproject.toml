@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 pymongo = {extras = ["srv", "tls"], version = "^4.6.0"}
+faker = "^20.0.0"
 
 
 [build-system]

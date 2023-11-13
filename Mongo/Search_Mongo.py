@@ -1,9 +1,8 @@
-from typing import List, Any, Dict
-
+from typing import List, Any
 import redis
 from redis_lru import RedisLRU
-from Conf.models import Author, Quote
-from Conf.db_mongo import URI
+from Mongo.models import Author, Quote
+from Mongo.db_mongo import URI
 from mongoengine import connect
 
 connect(host=URI)
