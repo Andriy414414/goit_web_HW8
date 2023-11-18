@@ -1,6 +1,8 @@
 import json
+from mongoengine import connect
 from models import Author, Quote
 from mongoengine.errors import NotUniqueError
+from db_mongo import URI
 
 
 def load_authors(filename):
@@ -25,5 +27,6 @@ def load_quotes(filename):
 
 
 if __name__ == '__main__':
+    connect(host=URI)
     load_authors('authors.json')
     load_quotes('quotes.json')
